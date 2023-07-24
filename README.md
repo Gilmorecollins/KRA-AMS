@@ -1,1 +1,1 @@
-# KRA-AMS
+# KRA
