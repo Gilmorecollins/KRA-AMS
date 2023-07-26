@@ -26,11 +26,12 @@ class UserSerializer(serializers.Serializer):
         fields = ['personal_number', 'domain', 'name', 'station', 'section', 'role']
 
 
-class AssetSerializer(serializers.Serializer):
+class AssetSerializer(serializers.ModelSerializer):
     class Meta:
         model = Asset
-        fields = ['serial_number', 'asset_type', 'model_type', 'model_number', 'mac_address', 'os', 'wake_on_lan',
-                  'kav', 'status', 'location']
+        # fields = ['serial_number', 'asset_type', 'model_type', 'model_number', 'mac_address', 'os', 'wake_on_lan',
+        #           'kav', 'status', 'location']
+        fields = '__all__'
 
 
 class TicketSerializer(serializers.Serializer):
