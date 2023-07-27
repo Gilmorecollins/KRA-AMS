@@ -17,7 +17,7 @@ class Department(models.Model):
     
 class Section(models.Model):
     name = models.CharField(max_length=50)
-    station=models.ForeignKey(Department, on_delete= models.CASCADE)
+    department=models.ForeignKey(Department, on_delete= models.CASCADE)
 
 
 
