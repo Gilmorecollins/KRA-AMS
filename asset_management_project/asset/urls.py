@@ -1,8 +1,10 @@
 from django.urls import path
 from . import views
+
 # from django.conf.urls import url
 
 
 urlpatterns = [
     path('asset/', views.assetApi),
+    path('asset/<str:pk>/', views.assetApiView),
 ]

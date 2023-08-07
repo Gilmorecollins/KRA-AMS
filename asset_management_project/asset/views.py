@@ -16,7 +16,7 @@ from .serializers import StationSerializer, DepartmentSerializer, SectionSeriali
 
 # Create your views here.
 @api_view(['GET', 'POST'])
-def assetApi(request, id=0):
+def assetApi(request):
     if request.method == 'GET':
         asset = Asset.objects.all()
         asset_serializer = AssetSerializer(asset, many=True)
@@ -31,18 +31,28 @@ def assetApi(request, id=0):
             return Response(asset_serializer.data, status=status.HTTP_201_CREATED)
         return Response(asset_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+
+@api_view(['GET', 'PUT', 'DELETE'])
+def assetApiView(request, pk):
+    try:
+        asset = Asset.objects.get(pk=pk)
+
+    except Asset.DoesNotExist:
+        return HttpResponse(status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'GET':
+        asset_serializer = AssetSerializer(asset)
+        return Response(asset_serializer.data)
+
     elif request.method == 'PUT':
-        asset_data = JSONParser().parse(request)
-        asset = Asset.objects.get(serial_number=asset_data['serial_number'])
-        asset_serializer = AssetSerializer(asset, data=asset_data)
+        asset_serializer = AssetSerializer(asset, data=request.data)
 
         if asset_serializer.is_valid():
             asset_serializer.save()
-            return JsonResponse('Asset Update Successfully', safe=False)
-        return JsonResponse('Failed to Update Asset')
+            return Response(asset_serializer.data)
+        return Response(asset_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     elif request.method == 'DELETE':
-        asset = Asset.objects.get(serial_number=id)
         asset.delete()
-        return JsonResponse('Deleted Successfully', safe=False)
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
