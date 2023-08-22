@@ -3,6 +3,29 @@ body {
   background-color: #ffffff;
 }
 
+/* contact button styling */
+.contact-btn{
+  background-color: #EF242A;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  top: 5;
+  right: 1%;
+  position: absolute;
+}
+.contact-btn a{
+  color: inherit;
+}
+.contact-btn:hover{
+  background-color: #000000;
+}
+
+
 /* Logo styling start*/
 header {
   background-color: #333;
@@ -16,9 +39,7 @@ header {
 
 .logo img {
   width: 100px;
-  /* Adjust the width as needed */
   height: auto;
-  /* Maintain aspect ratio */
 }
 
 .logo-text {

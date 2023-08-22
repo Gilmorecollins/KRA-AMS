@@ -6,7 +6,7 @@
     $password = $_POST["password"];
     
     // Validate the credentials (replace this with your own logic)
-    if ($username == "admin" && $password == "admin123") {
+    if ($username == "NRR" && $password == "Kiptagich@2030") {
       // Redirect to a success page or perform any other actions
       header("location:.nav/sidenav.html");
       // echo "Login successful!";
